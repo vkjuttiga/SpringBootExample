@@ -1,0 +1,16 @@
+# Default values for spring-boot-helm.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+namespace: com-att-idp
+appLabel: spring-test
+replicaCount: 1
+
+image:
+  repository: spring-test:v4
+  pullPolicy: Never
+
+service:
+  type: NodePort
+  port: 8012
+  nodePort: 32083

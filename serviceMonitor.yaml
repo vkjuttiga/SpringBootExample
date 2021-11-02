@@ -1,0 +1,17 @@
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: spring-test
+  labels:
+    app: spring-test
+    release: my-release
+spec:
+  selector:
+    matchLabels:
+      app: spring-test
+  namespaceSelector:
+    any: true
+  endpoints:
+    - port: web
+      path: /actuator/prometheus
+      interval: 10s

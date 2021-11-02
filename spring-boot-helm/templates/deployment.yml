@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{.Values.appLabel}}
+  namespace: {{.Values.namespace}}
+  labels:
+    app: {{.Values.appLabel}}
+spec:
+  replicas:  {{.Values.replicaCount}}
+  selector:
+    matchLabels:
+      app: {{.Values.appLabel}}
+  strategy: {}
+  template:
+    metadata:
+      labels:
+        app: {{.Values.appLabel}}
+      annotations:
+        prometheus.io/scrape: "true"
+        prometheus.io/port: "8012"
+        prometheus.io/path: "/actuator/prometheus"
+    spec:
+      containers:
+      - image: {{.Values.image.repository}}
+        name: {{.Values.appLabel}}
+        imagePullPolicy: {{.Values.image.pullPolicy}}
+        resources: {}
+        ports:
+          - name: web
+            containerPort: {{.Values.service.port}}
