@@ -58,7 +58,7 @@ Docker Build
 Helm Install
 ```bash
   helm package spring-boot-helm
-  helm install spring-boot-helm spring-boot-helm-0.1.0.tgz --namespace Com-att-idp --create-namespace
+  helm install spring-boot-helm spring-boot-helm-0.1.0.tgz --namespace com-att-idp --create-namespace
 ```
 
 open the endpoint http://localhost:32083/students
